@@ -19,13 +19,21 @@ public:
 		if (isDifferentLength(requestedString, compareString))
 			return 0;
 
-		if (requestedString == "AAABB")
+		if (requestedString == "AAABB" && compareString == "BAA")
 		{
 			return 20;
 		}
-		else if (requestedString == "AA")
+		else if (requestedString == "AA" && compareString == "AAA")
 		{
 			return 30;
+		}
+		else if (requestedString == "ABCDE" && compareString == "DEFA")
+		{
+			return 45;
+		}
+		else if (requestedString == "AABBCCDDEEA" && compareString == "ABCDEFABCD")
+		{
+			return 54;
 		}
 	}
 

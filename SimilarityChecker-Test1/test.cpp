@@ -21,4 +21,10 @@ TEST(TestCaseName, LengthAlmostSame)
 
 	sc.setRequestedString("AA");
 	EXPECT_EQ(30, sc.getLengthScore("AAA"));
+
+	sc.setRequestedString("ABCDE");
+	EXPECT_EQ(45, sc.getLengthScore("DEFA"));
+
+	sc.setRequestedString("AABBCCDDEEA");
+	EXPECT_EQ(54, sc.getLengthScore("ABCDEFABCD"));
 }
