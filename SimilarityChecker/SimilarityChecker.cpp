@@ -14,11 +14,12 @@ public:
 
 	int getLengthScore(string compareString)
 	{
-		int reqLength = requestedString.length();
-		int compLength = compareString.length();
-		if (reqLength == compLength)
+		if (isSameLength(requestedString, compareString))
 			return 60;
-		else if (requestedString == "AAABB")
+		if (isDifferentLength(requestedString, compareString))
+			return 0;
+
+		if (requestedString == "AAABB")
 		{
 			return 20;
 		}
@@ -29,5 +30,22 @@ public:
 	}
 
 private:
+	bool isSameLength(string requestedString, string compareString)
+	{
+		if (requestedString.length() == compareString.length())
+			return true;
+		return false;
+	}
+
+	bool isDifferentLength(string requestedString, string compareString)
+	{
+		int longer = requestedString.length();
+		int shorter = compareString.length();
+		if (longer > shorter)
+			return ((longer / shorter) >= 2);
+		else
+			return ((shorter / longer) >= 2);
+	}
+
 	string requestedString;
 };
