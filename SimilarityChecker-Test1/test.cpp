@@ -2,8 +2,11 @@
 #include "../SimilarityChecker/SimilarityChecker.cpp"
 
 
-TEST(TestCaseName, TestName)
+TEST(TestCaseName, LengthChecker)
 {
-	EXPECT_EQ(1, 1);
-	EXPECT_TRUE(true);
+	SimilarityChecker sc("ASD");
+	EXPECT_EQ(60, sc.getLengthScore("DSA"));
+
+	sc.setRequestedString("A");
+	EXPECT_EQ(0, sc.getLengthScore("BB"));
 }
