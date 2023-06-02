@@ -24,13 +24,18 @@ public:
 
 	int getAlphaScore(const string& compareString)
 	{
-		if (requestedString=="ASD" && compareString=="DSA")
+		int sameAlphaCount = 0;
+		for (int i = 0; i < compareString.length(); i++)
+		{
+			int index = requestedString.find(compareString[i]);
+			if (index == -1) continue;
+			sameAlphaCount++;
+		}
+
+		if (sameAlphaCount == compareString.length())
 			return 40;
 
-		if (requestedString == "A" && compareString == "BB")
-			return 0;
-
-		if (requestedString == "DEF" && compareString == "ABC")
+		if (sameAlphaCount == 0)
 			return 0;
 
 		if (requestedString == "AAABB" && compareString == "BA")
