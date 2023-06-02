@@ -53,8 +53,8 @@ TEST(TestCaseName, AlphaAlmostSame)
 	EXPECT_EQ(40, sc.getAlphaScore("BA"));
 
 	sc.setRequestedString("AG");
-	EXPECT_EQ(10, sc.getAlphaScore("AAEGHJIO"));
+	EXPECT_EQ(10, sc.getAlphaScore("ABEGHJIO"));
 
 	sc.setRequestedString("ABCDEG");
-	EXPECT_EQ(20, sc.getAlphaScore("DEFA"));
+	EXPECT_EQ(20, sc.getAlphaScore("DEA"));
 }

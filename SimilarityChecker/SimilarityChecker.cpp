@@ -24,6 +24,16 @@ public:
 
 	int getAlphaScore(const string& compareString)
 	{
+		int totalAlphaCount = 0;
+		char alphaCount[128] = { 0, };
+		for (int i = 0; i < requestedString.length(); ++i)
+			alphaCount[requestedString[i]]++;
+		for (int i = 0; i < compareString.length(); ++i)
+			alphaCount[compareString[i]]++;
+		for (int i = 65; i < 128; ++i)
+			if (alphaCount[i])
+				totalAlphaCount++;
+
 		int sameAlphaCount = 0;
 		for (int i = 0; i < compareString.length(); i++)
 		{
@@ -32,20 +42,14 @@ public:
 			sameAlphaCount++;
 		}
 
-		if (sameAlphaCount == compareString.length())
+		if (sameAlphaCount == compareString.length() && sameAlphaCount == requestedString.length())
 			return 40;
 
 		if (sameAlphaCount == 0)
 			return 0;
-
-		if (requestedString == "AAABB" && compareString == "BA")
-			return 40;
-
-		if (requestedString == "AG" && compareString == "AAEGHJIO")
-			return 10;
-
-		if (requestedString == "ABCDEG" && compareString == "DEFA")
-			return 20;
+				
+		int score = sameAlphaCount * 40 / totalAlphaCount;
+		return score;
 	}
 
 private:
