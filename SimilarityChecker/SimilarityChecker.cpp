@@ -15,7 +15,7 @@ public:
 	int getLengthScore(const string& compareString)
 	{
 		if (isSameLength(compareString))
-			return 60;
+			return MAX_LENGTH_SCORE;
 		if (isBigDifferentLength(compareString))
 			return 0;
 
@@ -28,7 +28,7 @@ public:
 		int sameAlphaCount = getSameAlphaCount(compareString);
 
 		if (isAllSameAlpha(sameAlphaCount, compareString))
-			return 40;
+			return MAX_ALPHA_SCORE;
 		if (sameAlphaCount == 0)
 			return 0;
 				
@@ -101,5 +101,7 @@ private:
 		return sameAlphaCount;
 	}
 
+	const int MAX_LENGTH_SCORE = 60;
+	const int MAX_ALPHA_SCORE = 40;
 	string requestedString;
 };
