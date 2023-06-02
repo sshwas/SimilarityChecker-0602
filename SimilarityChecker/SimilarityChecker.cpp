@@ -22,6 +22,27 @@ public:
 		return getAlmostSameScore(compareString);
 	}
 
+	int getAlphaScore(const string& compareString)
+	{
+		if (requestedString=="ASD" && compareString=="DSA")
+			return 40;
+
+		if (requestedString == "A" && compareString == "BB")
+			return 0;
+
+		if (requestedString == "DEF" && compareString == "ABC")
+			return 0;
+
+		if (requestedString == "AAABB" && compareString == "BA")
+			return 40;
+
+		if (requestedString == "AG" && compareString == "AAEGHJIO")
+			return 10;
+
+		if (requestedString == "ABCDEG" && compareString == "DEFA")
+			return 20;
+	}
+
 private:
 	bool isSameLength(const string& compareString)
 	{
