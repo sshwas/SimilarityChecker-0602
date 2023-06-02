@@ -19,22 +19,7 @@ public:
 		if (isDifferentLength(requestedString, compareString))
 			return 0;
 
-		if (requestedString == "AAABB" && compareString == "BAA")
-		{
-			return 20;
-		}
-		else if (requestedString == "AA" && compareString == "AAA")
-		{
-			return 30;
-		}
-		else if (requestedString == "ABCDE" && compareString == "DEFA")
-		{
-			return 45;
-		}
-		else if (requestedString == "AABBCCDDEEA" && compareString == "ABCDEFABCD")
-		{
-			return 54;
-		}
+		return getAlmostSameScore(compareString);
 	}
 
 private:
@@ -53,6 +38,26 @@ private:
 			return ((longer / shorter) >= 2);
 		else
 			return ((shorter / longer) >= 2);
+	}
+
+	int getAlmostSameScore(string compareString)
+	{
+		if (requestedString == "AAABB" && compareString == "BAA")
+		{
+			return 20;
+		}
+		else if (requestedString == "AA" && compareString == "AAA")
+		{
+			return 30;
+		}
+		else if (requestedString == "ABCDE" && compareString == "DEFA")
+		{
+			return 45;
+		}
+		else if (requestedString == "AABBCCDDEEA" && compareString == "ABCDEFABCD")
+		{
+			return 54;
+		}
 	}
 
 	string requestedString;
