@@ -12,52 +12,45 @@ public:
 		requestedString = str;
 	}
 
-	int getLengthScore(string compareString)
+	int getLengthScore(const string& compareString)
 	{
-		if (isSameLength(requestedString, compareString))
+		if (isSameLength(compareString))
 			return 60;
-		if (isDifferentLength(requestedString, compareString))
+		if (isBigDifferentLength(compareString))
 			return 0;
 
 		return getAlmostSameScore(compareString);
 	}
 
 private:
-	bool isSameLength(string requestedString, string compareString)
+	bool isSameLength(const string& compareString)
 	{
 		if (requestedString.length() == compareString.length())
 			return true;
 		return false;
 	}
 
-	bool isDifferentLength(string requestedString, string compareString)
+	bool isBigDifferentLength(const string& compareString)
 	{
-		int longer = requestedString.length();
-		int shorter = compareString.length();
-		if (longer > shorter)
-			return ((longer / shorter) >= 2);
+		int reqLength = requestedString.length();
+		int compareLength = compareString.length();
+		if (reqLength > compareLength)
+			return ((reqLength / compareLength) >= 2);
 		else
-			return ((shorter / longer) >= 2);
+			return ((compareLength / reqLength) >= 2);
 	}
 
-	int getAlmostSameScore(string compareString)
+	int getAlmostSameScore(const string& compareString)
 	{
-		if (requestedString == "AAABB" && compareString == "BAA")
-		{
-			return 20;
-		}
-		else if (requestedString == "AA" && compareString == "AAA")
-		{
-			return 30;
-		}
-		else if (requestedString == "ABCDE" && compareString == "DEFA")
-		{
-			return 45;
-		}
-		else if (requestedString == "AABBCCDDEEA" && compareString == "ABCDEFABCD")
-		{
-			return 54;
-		}
+		int longer, shorter;
+		if (requestedString.length() > compareString.length())
+			longer = requestedString.length(), shorter = compareString.length();
+		else
+			longer = compareString.length(), shorter = requestedString.length();
+
+		int gap = longer - shorter;
+		int score = 60 - (60 * gap / shorter);
+		return score;
 	}
 
 	string requestedString;

@@ -12,6 +12,9 @@ TEST(TestCaseName, LengthDifferent)
 {
 	SimilarityChecker sc("A");
 	EXPECT_EQ(0, sc.getLengthScore("BB"));
+
+	sc.setRequestedString("AAABCDEFGHI");
+	EXPECT_EQ(0, sc.getLengthScore("ABC"));
 }
 
 TEST(TestCaseName, LengthAlmostSame)
